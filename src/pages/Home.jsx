@@ -12,10 +12,12 @@ function Home() {
   const [isContentOpen, setIsContentOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(images[0]);
   const [loadedImages, setLoadedImages] = useState({});
+  const audioRef = useRef(null);
   let sliderRef = useRef(null);
 
   const handleOpenClick = () => {
     setIsContentOpen(true);
+    audioRef.current.play();
   };
 
   useEffect(() => {
@@ -66,6 +68,7 @@ function Home() {
 
   return (
     <>
+      <audio ref={audioRef} src="/sound.mp3" preload="auto" />
       <div className="home">
         <div className="row">
           <div className="col-lg-7 component-1 text-white p-0">
